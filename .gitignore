@@ -1,1 +1,6 @@
-.o
+*.o
+*.vcd
+*.bin
+*.elf
+*.map
+*_sim
