@@ -18,6 +18,22 @@ void uart_putc(char c) {
     UART0_DR = c;
 }
 
+void uart_put_u32(uint32_t x) {
+    char buf[10];
+    int i = 0;
+
+    if (x == 0) {
+        uart_putc('0');
+        return;
+    }
+
+    while (x) {
+        buf[i++] = '0' + (x % 10);
+        x /= 10;
+    }
+    while (i--) uart_putc(buf[i]);
+}
+
 void uart_puts(const char *s) {
     while (*s) {
         if (*s == '\n') uart_putc('\r');
@@ -40,21 +56,6 @@ void *memset(void *s, int c, size_t n) {
     return s;
 }
 
-void uart_put_u32(uint32_t x) {
-    char buf[10];
-    int i = 0;
-
-    if (x == 0) {
-        uart_putc('0');
-        return;
-    }
-
-    while (x) {
-        buf[i++] = '0' + (x % 10);
-        x /= 10;
-    }
-    while (i--) uart_putc(buf[i]);
-}
 
 
 int benchmark_mayo(void) {

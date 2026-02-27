@@ -47,7 +47,8 @@ void init_random_matrix_p(uint16_t *matrix, int rows, int cols,
 
 void init_random_matrix_p(uint16_t *matrix, int rows, int cols, 
                        const uint8_t *seed, size_t seed_len);
-
+void init_random_matrix_o(uint16_t *matrix, int rows, int cols, 
+                        const uint8_t *seed, size_t seed_len);
 void init_random_matrix_l(uint16_t *matrix, int rows, int cols);
 
 #endif

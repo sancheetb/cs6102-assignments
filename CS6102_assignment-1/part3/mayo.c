@@ -28,7 +28,7 @@ void init_random_matrix_o(uint16_t *matrix, int rows, int cols,
                         const uint8_t *seed, size_t seed_len) {
     size_t num_elements = rows * cols;
     size_t num_bytes = num_elements * 2; 
-    uint8_t *random_bytes[2 * num_elements];
+    uint8_t random_bytes[2 * num_elements];
     
     shake256(random_bytes, num_bytes, seed, seed_len);
     
