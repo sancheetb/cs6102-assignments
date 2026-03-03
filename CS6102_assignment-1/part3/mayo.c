@@ -68,7 +68,6 @@ uint16_t gf65536_mul(uint16_t a, uint16_t b) {
     uint8_t b2 = (uint8_t)((b >> 8) & 0xF);
     uint8_t b3 = (uint8_t)((b >> 12) & 0xF);
 
-    // Compute the product polynomial coefficients c0..c6 over GF(16)
     uint8_t c0 = lookup_table[(a0 << 4) | b0];
     uint8_t c1 = lookup_table[(a1 << 4) | b0] ^ lookup_table[(a0 << 4) | b1];
     uint8_t c2 = lookup_table[(a2 << 4) | b0] ^ lookup_table[(a1 << 4) | b1]
@@ -80,7 +79,6 @@ uint16_t gf65536_mul(uint16_t a, uint16_t b) {
     uint8_t c5 = lookup_table[(a3 << 4) | b2] ^ lookup_table[(a2 << 4) | b3];
     uint8_t c6 = lookup_table[(a3 << 4) | b3];
 
-    // Reduce modulo x^4 + x + 1 over GF(16)
     uint8_t r0 = c0 ^ c4;
     uint8_t r1 = c1 ^ c4 ^ c5;
     uint8_t r2 = c2 ^ c5 ^ c6;
